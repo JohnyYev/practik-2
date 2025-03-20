@@ -1,23 +1,18 @@
-const WIDTH: usize = 10;  // Ширина конверта
-const HEIGHT: usize = 6; // Висота конверта
-
 fn main() {
-    let mut output = String::new();
+    const W: u32 = 25;
+    const H: u32 = 10;
 
-    for y in 0..HEIGHT {
-        for x in 0..WIDTH {
-            if y == 0 || y == HEIGHT - 1 {
-                output.push('-'); // Верхня і нижня межа
-            } else if x == 0 || x == WIDTH - 1 {
-                output.push('|'); // Бічні межі
-            } else if x == y || x == WIDTH - y - 1 {
-                output.push('/'); // Діагональні лінії
-            } else {
-                output.push(' '); // Порожній простір всередині
-            }
+    for y in 0..H {
+        for x in 0..W {
+            let is_hor: bool = y == 0 || y == H - 1;
+            let is_ver: bool = x == 0 || x == W - 1;
+            let is_diag: bool = x == y;
+            let is_diag2: bool = y == W - 1 - x;
+            let to_show: bool = is_hor || is_ver || is_diag || is_diag2;
+
+            let sym: char = if to_show { '*' } else { ' ' };
+            print!("{}", sym);
         }
-        output.push('\n');
+        println!();
     }
-
-    print!("{}", output); // Вивід конверта
 }
