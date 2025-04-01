@@ -1,6 +1,7 @@
+#[test]
 fn main() {
-    const W: u32 = 40;
-    const H: u32 = 20;
+    const W: u32 = 29;
+    const H: u32 = 10;
 
     for y in 0..H {
         for x in 0..W {
